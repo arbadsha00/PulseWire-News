@@ -13,14 +13,15 @@ const HomeLayout = () => {
         <Latest></Latest>
       </header>
       <Nav></Nav>
-          <section className="container mx-auto w-11/12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
-              <aside>
-                  <Category></Category>
-              </aside>
-              <section className="md:col-span-2">
-                  <Outlet></Outlet>
-              </section>
-              <aside></aside>
+
+      <section className="container mx-auto w-11/12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 my-6">
+        <aside>
+          <Category></Category>
+        </aside>
+        <section className="md:col-span-2">
+          <Outlet></Outlet>
+        </section>
+        <aside></aside>
       </section>
       <Footer></Footer>
     </div>

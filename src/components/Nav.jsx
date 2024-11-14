@@ -4,35 +4,58 @@ import { RiUser4Line } from "react-icons/ri";
 import { NavLink } from "react-router-dom";
 
 const Nav = () => {
-    const links = <>
-        <li>
-            <NavLink className={({ isActive }) =>
-          isActive
-            ? "bg-blue-500 text-white font-semibold rounded-none " // Active color and style
-            : "text-gray-700 hover:text-blue-500 " // Default color
-        } to="/category/01">Home</NavLink>
-        </li>
-        <li>
-            <NavLink className={({ isActive }) =>
-          isActive
-            ? "bg-blue-500 text-white font-semibold rounded-none" // Active color and style
-            : "text-gray-700 hover:text-blue-500" // Default color
-        } to="/career">Career</NavLink>
-        </li>
-        <li>
-            <NavLink className={({ isActive }) =>
-          isActive
-            ? "bg-blue-500 text-white font-semibold rounded-none" // Active color and style
-            : "text-gray-700 hover:text-blue-500" // Default color
-        } to="/about">About</NavLink>
-        </li>
-       
+  const links = (
+    <>
+      <li>
+        <NavLink
+          className={
+            ({ isActive }) =>
+              isActive
+                ? "bg-blue-500 text-white font-semibold rounded-none " // Active color and style
+                : "text-gray-700 hover:text-blue-500 " // Default color
+          }
+          to="/category/01"
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={
+            ({ isActive }) =>
+              isActive
+                ? "bg-blue-500 text-white font-semibold rounded-none" // Active color and style
+                : "text-gray-700 hover:text-blue-500" // Default color
+          }
+          to="/career"
+        >
+          Career
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={
+            ({ isActive }) =>
+              isActive
+                ? "bg-blue-500 text-white font-semibold rounded-none" // Active color and style
+                : "text-gray-700 hover:text-blue-500" // Default color
+          }
+          to="/about"
+        >
+          About
+        </NavLink>
+      </li>
     </>
+  );
   return (
-    <div className="navbar  p-0 bg-base-100 container mx-auto w-11/12 my-4">
+    <div className="navbar  p-0   container mx-auto w-11/12 my-4">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost p-0 md:hidden">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost p-0 md:hidden"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -58,13 +81,13 @@ const Nav = () => {
         <div></div>
       </div>
       <div className="navbar-center hidden md:flex">
-        <ul className="menu menu-horizontal px-1 text-base">
-        {links}
-        </ul>
+        <ul className="menu menu-horizontal px-1 text-base">{links}</ul>
       </div>
-          <div className="navbar-end">
-         
-        <a className="btn font-semibold text-xl bg-blue-500 text-white rounded-none"> <RiUser4Line className="text-3xl " /> Login</a>
+      <div className="navbar-end">
+        <a className="btn border-none font-semibold text-xl bg-blue-500 text-white rounded-none">
+          {" "}
+          <RiUser4Line className="text-3xl " /> Login
+        </a>
       </div>
     </div>
   );
