@@ -10,8 +10,8 @@ const Header = () => {
           PulseWire
         </h1>
           </div>
-          <p className="text-lg text-gray-500">Your Daily Dose of Clarity</p>
-          <h3 className="font-medium text-xl text-gray-600">
+          <p className="md:text-lg text-gray-500">Your Daily Dose of Clarity</p>
+          <h3 className="font-medium md:text-xl text-gray-600">
               {
                    moment().format('dddd, MMMM DD, YYYY')
          }

@@ -8,21 +8,21 @@ const Nav = () => {
         <li>
             <NavLink className={({ isActive }) =>
           isActive
-            ? "bg-blue-500 text-white font-semibold" // Active color and style
-            : "text-gray-700 hover:text-blue-500" // Default color
-        } to="/">Home</NavLink>
+            ? "bg-blue-500 text-white font-semibold rounded-none " // Active color and style
+            : "text-gray-700 hover:text-blue-500 " // Default color
+        } to="/category/01">Home</NavLink>
         </li>
         <li>
             <NavLink className={({ isActive }) =>
           isActive
-            ? "bg-blue-500 text-white font-semibold" // Active color and style
+            ? "bg-blue-500 text-white font-semibold rounded-none" // Active color and style
             : "text-gray-700 hover:text-blue-500" // Default color
         } to="/career">Career</NavLink>
         </li>
         <li>
             <NavLink className={({ isActive }) =>
           isActive
-            ? "bg-blue-500 text-white font-semibold" // Active color and style
+            ? "bg-blue-500 text-white font-semibold rounded-none" // Active color and style
             : "text-gray-700 hover:text-blue-500" // Default color
         } to="/about">About</NavLink>
         </li>
@@ -32,7 +32,7 @@ const Nav = () => {
     <div className="navbar  p-0 bg-base-100 container mx-auto w-11/12 my-4">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
+          <div tabIndex={0} role="button" className="btn btn-ghost p-0 md:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -50,7 +50,7 @@ const Nav = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="text-base menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             {links}
           </ul>
@@ -58,7 +58,7 @@ const Nav = () => {
         <div></div>
       </div>
       <div className="navbar-center hidden md:flex">
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1 text-base">
         {links}
         </ul>
       </div>
