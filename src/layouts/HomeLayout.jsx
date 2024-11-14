@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Latest from "../components/Latest";
 import Nav from "../components/Nav";
-
+import RightSide from "../components/RightSide";
 const HomeLayout = () => {
   return (
     <div>
@@ -21,7 +21,9 @@ const HomeLayout = () => {
         <section className="md:col-span-2">
           <Outlet></Outlet>
         </section>
-        <aside></aside>
+        <aside>
+        <RightSide></RightSide>
+        </aside>
       </section>
       <Footer></Footer>
     </div>
