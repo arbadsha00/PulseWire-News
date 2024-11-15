@@ -1,9 +1,33 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Nav from "../components/Nav";
 
-import { useContext } from 'react';
+import { useContext } from "react";
+import AuthContext from "../Provider/AuthContext";
 const Register = () => {
-  
+  const navigate = useNavigate();
+  const {  createUser,update } = useContext(AuthContext);
+  const handleRegister = (e) => {
+    e.preventDefault();
+    console.log(e.currentTarget);
+    const form = new FormData(e.currentTarget);
+
+    const name = form.get("name");
+    const photo = form.get("photo");
+    const email = form.get("email");
+    const password = form.get("password");
+    console.log(name, photo, email, password);
+
+    // create user
+    createUser(email, password)
+      .then(res => {
+        console.log(res.user);
+        update({displayName : name,photoURL:photo})
+      })
+      .then(() => {
+        navigate("/");
+    })
+    
+  };
   return (
     <div>
       <Nav></Nav>
@@ -12,7 +36,7 @@ const Register = () => {
           Register your account
         </h1>
         <div className="divider"></div>
-        <form className="card-body pt-3">
+        <form onSubmit={handleRegister} className="card-body pt-3">
           <div className="form-control">
             <label className="label">
               <span className="label-text font-semibold">Name</span>
@@ -30,7 +54,7 @@ const Register = () => {
               <span className="label-text font-semibold">Photo Url</span>
             </label>
             <input
-              name="photoUrl"
+              name="photo"
               type="text"
               placeholder="Photo Url"
               className="input bg-gray-100"
@@ -66,7 +90,7 @@ const Register = () => {
           </div>
           <div className="form-control">
             <button className="btn bg-gradient-to-br from-cyan-400 via-indigo-500 to-pink-500 text-white text-xl">
-              Register 
+              Register
             </button>
           </div>
           <p className="text-center text-sm pt-2 text-gray-500">

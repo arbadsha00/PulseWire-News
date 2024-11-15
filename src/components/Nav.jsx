@@ -1,7 +1,7 @@
-
-
+import { useContext } from "react";
 import { RiUser4Line } from "react-icons/ri";
 import { Link, NavLink } from "react-router-dom";
+import AuthContext from "../Provider/AuthContext";
 
 const Nav = () => {
   const links = (
@@ -47,6 +47,9 @@ const Nav = () => {
       </li>
     </>
   );
+
+  const { user, logOut } = useContext(AuthContext);
+  console.log(user);
   return (
     <div className="navbar  p-0   container mx-auto w-11/12 my-4">
       <div className="navbar-start">
@@ -78,16 +81,24 @@ const Nav = () => {
             {links}
           </ul>
         </div>
-        <div></div>
+        <div>{user?.displayName}</div>
       </div>
       <div className="navbar-center hidden md:flex">
         <ul className="menu menu-horizontal px-1 text-base">{links}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login" className="btn border-none font-semibold text-xl bg-blue-500 text-white rounded-none">
-        
-          <RiUser4Line className="text-3xl " /> Login
-        </Link>
+        {user ? (
+          <button onClick={()=>logOut()}className="btn border-none font-semibold text-xl bg-blue-500 text-white rounded-none">
+           <RiUser4Line className="text-3xl " /> LogOut
+          </button>
+        ) : (
+          <Link
+            to="/login"
+            className="btn border-none font-semibold text-xl bg-blue-500 text-white rounded-none"
+          >
+            <RiUser4Line className="text-3xl " /> Login
+          </Link>
+        )}
       </div>
     </div>
   );

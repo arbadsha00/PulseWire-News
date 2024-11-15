@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import Nav from "../components/Nav";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import AuthContext from "../Provider/AuthContext";
 
 const Login = () => {
+  const Navigate = useNavigate();
+  const location = useLocation();
+  const { signIn } = useContext(AuthContext);
+  const handleLogin = e => {
+    e.preventDefault();
+    console.log(e.currentTarget);
+    const form = new FormData(e.currentTarget);
+    const email = form.get('email');
+    const password = form.get('password');
+    console.log(email, password);
+    signIn(email, password)
+    Navigate(location?.state ? location.state : "/");
+  }
   return (
     <div>
       <Nav></Nav>
@@ -11,7 +25,7 @@ const Login = () => {
           Login your account
         </h1>
         <div className="divider"></div>
-        <form className="card-body pt-3">
+        <form onSubmit={handleLogin} className="card-body pt-3">
           <div className="form-control">
             <label className="label">
               <span className="label-text font-semibold">Email</span>
