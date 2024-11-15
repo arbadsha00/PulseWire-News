@@ -1,8 +1,10 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import HomeLayout from "../layouts/HomeLayout";
 import Error from "../components/Error";
-import CategoryNews from "../Pages.jsx/CategoryNews";
+import CategoryNews from "../Pages/CategoryNews.jsx"
 
+import Login from "../Pages/Login.jsx"
+import Register from "../Pages/Register.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +24,15 @@ const router = createBrowserRouter([
           ),
       },
     ],
+  },
+  {
+    path: "/login",
+    element : <Login></Login>
+  },
+  {
+  path : "/register",
+  element : <Register></Register>,
+    
   },
 ]);
 export default router;

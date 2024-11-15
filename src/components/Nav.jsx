@@ -1,7 +1,7 @@
-import React from "react";
-import { FaUserCircle } from "react-icons/fa";
+
+
 import { RiUser4Line } from "react-icons/ri";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Nav = () => {
   const links = (
@@ -84,10 +84,10 @@ const Nav = () => {
         <ul className="menu menu-horizontal px-1 text-base">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn border-none font-semibold text-xl bg-blue-500 text-white rounded-none">
-          {" "}
+        <Link to="/login" className="btn border-none font-semibold text-xl bg-blue-500 text-white rounded-none">
+        
           <RiUser4Line className="text-3xl " /> Login
-        </a>
+        </Link>
       </div>
     </div>
   );
