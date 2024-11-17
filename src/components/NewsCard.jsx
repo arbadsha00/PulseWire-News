@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const NewsCard = (props = {}) => {
   const { news } = props || {};
     if (!news) {
-      console.log("empty");
+      // console.log("empty");
   }
     return (
         <div className="  bg-white rounded-lg shadow-md">

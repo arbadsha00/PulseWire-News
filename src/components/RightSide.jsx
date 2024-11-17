@@ -4,12 +4,15 @@ import { ImGithub } from "react-icons/im";
 import { ImFacebook } from "react-icons/im";
 import { AiFillInstagram } from "react-icons/ai";
 import { ImTwitter } from "react-icons/im";
+import AuthContext from "../Provider/AuthContext";
+import { useContext } from "react";
 const RightSide = () => {
+  const { googleSignIn } = useContext(AuthContext);
   return (
     <div className="space-y-4">
       <h3 className="text-xl font-semibold">Login With</h3>
       <div>
-        <button className="btn rounded-none shadow-md bg-base-100 shadow-pink-500 text-pink-500 w-full text-lg mb-2" >
+        <button onClick={()=>googleSignIn()} className="btn rounded-none shadow-md bg-base-100 shadow-pink-500 text-pink-500 w-full text-lg mb-2" >
           <ImGoogle />
           Google
               </button>

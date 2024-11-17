@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 
 const NewsDetails = () => {
     const data = useLoaderData();
-    console.log(data);
+    // console.log(data);
   return (
     <div className="  bg-white rounded-lg shadow-md p-4">
       <img

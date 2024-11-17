@@ -15,7 +15,7 @@ const Latest = () => {
       </h3>
 
       <Marquee className="font-semibold text-lg space-x-10">
-        {data.map(item=><Link key={item.category_id} className="" to="/news">
+        {data.map(item=><Link key={item._id} className="" to={`news/${item._id}`}>
          | {item.title}  |
         </Link>)}
         

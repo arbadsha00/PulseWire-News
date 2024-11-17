@@ -1,22 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Nav from "../components/Nav";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import AuthContext from "../Provider/AuthContext";
 
 const Login = () => {
+  const [error, setError] = useState("");
   const Navigate = useNavigate();
   const location = useLocation();
-  const { signIn } = useContext(AuthContext);
-  const handleLogin = e => {
+  const { signIn,setLoading } = useContext(AuthContext);
+  const handleLogin = (e) => {
     e.preventDefault();
-    console.log(e.currentTarget);
+    // console.log(e.currentTarget);
     const form = new FormData(e.currentTarget);
-    const email = form.get('email');
-    const password = form.get('password');
-    console.log(email, password);
+    const email = form.get("email");
+    const password = form.get("password");
+    // console.log(email, password);
     signIn(email, password)
-    Navigate(location?.state ? location.state : "/");
-  }
+      .then((result) => {
+        Navigate(location?.state ? location.state : "/");
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  };
   return (
     <div>
       <Nav></Nav>
@@ -30,8 +37,8 @@ const Login = () => {
             <label className="label">
               <span className="label-text font-semibold">Email</span>
             </label>
-                      <input
-                          name="email"
+            <input
+              name="email"
               type="email"
               placeholder="email"
               className="input bg-gray-100"
@@ -43,7 +50,7 @@ const Login = () => {
               <span className="label-text font-semibold">Password</span>
             </label>
             <input
-            name="password"
+              name="password"
               type="password"
               placeholder="password"
               className="input bg-gray-100"
@@ -53,12 +60,19 @@ const Login = () => {
               {/* <a href="#" className="label-text-alt link link-hover">Forgot password?</a> */}
             </label>
           </div>
+          {error && <p className="text-red-500">{error}</p>}
           <div className="form-control">
+            
             <button className="btn bg-gradient-to-br from-cyan-400 via-indigo-500 to-pink-500 text-white text-xl">
               Login
             </button>
-                  </div>
-                  <p className="text-center text-sm pt-2 text-gray-500">Dont’t Have An Account ? <Link className="text-blue-500 font-semibold" to="/register">Register</Link></p>
+          </div>
+          <p className="text-center text-sm pt-2 text-gray-500">
+            Dont’t Have An Account ?{" "}
+            <Link className="text-blue-500 font-semibold" to="/register">
+              Register
+            </Link>
+          </p>
         </form>
       </div>
     </div>

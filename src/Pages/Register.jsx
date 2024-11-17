@@ -1,32 +1,33 @@
 import { Link, useNavigate } from "react-router-dom";
 import Nav from "../components/Nav";
-
-import { useContext } from "react";
+import auth from "../Provider/AuthContext.js";
+import { useContext, useState } from "react";
 import AuthContext from "../Provider/AuthContext";
 const Register = () => {
   const navigate = useNavigate();
-  const {  createUser,update } = useContext(AuthContext);
+  const { createUser, update, setUser,setLoading } = useContext(AuthContext);
+  const [error, setError] = useState("");
   const handleRegister = (e) => {
     e.preventDefault();
-    console.log(e.currentTarget);
+    // console.log(e.currentTarget);
     const form = new FormData(e.currentTarget);
 
     const name = form.get("name");
     const photo = form.get("photo");
     const email = form.get("email");
     const password = form.get("password");
-    console.log(name, photo, email, password);
+    // console.log(name, photo, email, password);
 
     // create user
     createUser(email, password)
       .then(res => {
-        console.log(res.user);
-        update({displayName : name,photoURL:photo})
+       
+        update({ displayName: name, photoURL: photo }).then(() => { navigate("/") });
       })
-      .then(() => {
-        navigate("/");
+      .catch(err => {
+        setLoading(false);
+        setError(err.message)
     })
-    
   };
   return (
     <div>
@@ -88,6 +89,7 @@ const Register = () => {
               {/* <a href="#" className="label-text-alt link link-hover">Forgot password?</a> */}
             </label>
           </div>
+          {error && <p className="text-red-500">{ error}</p> }
           <div className="form-control">
             <button className="btn bg-gradient-to-br from-cyan-400 via-indigo-500 to-pink-500 text-white text-xl">
               Register

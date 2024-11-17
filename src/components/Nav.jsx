@@ -4,6 +4,8 @@ import { Link, NavLink } from "react-router-dom";
 import AuthContext from "../Provider/AuthContext";
 
 const Nav = () => {
+
+
   const links = (
     <>
       <li>
@@ -48,8 +50,11 @@ const Nav = () => {
     </>
   );
 
-  const { user, logOut } = useContext(AuthContext);
-  console.log(user);
+  const { user, logOut,loading } = useContext(AuthContext);
+  // console.log(user);
+  if (loading) {
+    return <span className="loading loading-infinity loading-lg"></span>
+}
   return (
     <div className="navbar  p-0   container mx-auto w-11/12 my-4">
       <div className="navbar-start">

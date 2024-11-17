@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCRWJsgzo4By_vhbSKl5Vi9SBTkq_zKgro",
-  authDomain: "pulsewire-c11bf.firebaseapp.com",
-  projectId: "pulsewire-c11bf",
-  storageBucket: "pulsewire-c11bf.firebasestorage.app",
-  messagingSenderId: "711609045382",
-  appId: "1:711609045382:web:aaf3adab8b0afb4d7e5c07",
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase
